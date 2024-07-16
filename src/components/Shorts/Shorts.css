@@ -1,0 +1,18 @@
+.shorts-container{
+    height: auto;
+    width: 100%;
+    margin-top: 30px;
+    margin-right: 20px;
+}
+.shorts-header{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    height: 70px;
+    width: 100%;
+    margin: auto;
+}
+.shorts-img{
+    width: 25%;
+    height: 100%;
+}

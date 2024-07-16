@@ -1,0 +1,212 @@
+.detail-page{
+  height: auto;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+.detail-container{
+    height: auto;
+    width: 70%;
+    padding: 3%;
+}
+.short-component{
+    width: 30%;
+    height: auto;
+    padding: 1.4rem;
+    margin-top: 2rem;
+}
+.deatil-item{
+    height: auto;
+    width: 100%;
+}
+.detail-video{
+    height: 70vh;
+    width: 100%;
+}
+.player{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.detail-title{
+    font-size: 1.5rem;
+    font-weight: 600;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.channel-info{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.channel-ref{
+    display: flex;
+    flex-direction: row;
+    height: 40px;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: 14px;
+    margin-bottom: 18px;
+}
+.channel-subs{
+    height: 35px;
+    width: 140px;
+    border-radius: 30px;
+    margin-left: 16px;
+    background-color: rgb(33, 33, 33);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.channel-subs:hover{
+    background-color: rgb(58, 58, 58);
+}
+.channel-reaction{
+    width: 170px;
+    height: 35px;
+    display: flex;
+    flex-direction: row;
+    font-size: 26px;
+    align-items: center;
+    justify-content: center;
+    margin-right: 2rem;
+    border-radius: 20px;
+    border: 1px solid  rgb(58, 58, 58);
+}
+.channel-like{
+    height: 30px;
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-right: 1px solid  rgb(58, 58, 58);
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+.channel-like:hover{
+    font-size: 30px;
+}
+.channel-dislike{
+    height: 30px;
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-left: 1px solid  rgb(58, 58, 58);
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+.channel-dislike:hover{
+    font-size: 30px;
+}
+.channel-img{
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    margin-right: 12px;
+    border: 1px solid rgb(207, 205, 205);
+}
+.channel-logo{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+.detail-channelname{
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: rgb(111, 111, 111);
+}
+.detail-thumb{
+    font-size: 1rem;
+    color: rgb(145, 143, 143);
+}
+.detail-description{
+    font-size: 1rem;
+    color: rgb(145, 143, 143);
+}
+.comment-box{
+    height: auto;
+    width: 100%;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+}
+.comment{
+    font-size: 1.2rem;
+    height: auto;
+    width: 100%;
+    font-weight: 400;
+}
+.do-comment{
+    height: 35px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+.comment-img-box{
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    margin-right: 12px;
+    border: 1px solid rgb(207, 205, 205);
+}
+.comment-img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+.comment-here{
+    height: 32px;
+    width: 100%;
+    border: none;
+    outline: none;
+    border-radius:0;
+    border-bottom: 1px solid  rgb(207, 205, 205)
+}
+.optional-btn{
+    height: 35px;
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    margin-top: 16px;
+}
+.comment-btn{
+    height: 28px;
+    width: 98px;
+    background-color: tomato;
+    color: white;
+    border-radius: 6px;
+    margin-left: 13px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.cancel-btn{
+    height: 28px;
+    width: 98px;
+    border-radius: 6px;
+    background-color: black;
+    margin-left: 16px;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.users-comments{
+    display: flex;
+    flex-direction: row;
+    height: auto;
+    width: 100%;
+    margin-top: 40px;
+    margin-bottom: 12px;
+}
+.comment-user-box{
+    display: flex;
+    flex-direction: column;
+}
+.comment-username{
+    font-weight: 500;
+    font-size: 19px;
+}

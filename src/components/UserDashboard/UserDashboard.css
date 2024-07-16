@@ -1,0 +1,78 @@
+.userboard-container{
+    height: 100%;
+    width: 100%;
+    margin-top: 32px;
+    display: flex;
+    flex-direction: column;
+}
+.userbox-1{
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    align-items: center;
+    border-bottom:  1px solid rgb(222, 221, 221);
+    justify-content: flex-start;
+    padding: 35px;
+    
+}
+.user-img-box{
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+    border: 1px solid rgb(222, 221, 221);
+    margin-left: 10%;
+}
+.user-image{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+.user-inform{
+    display: flex;
+    flex-direction: column;
+    font-size: 20px;
+    font-weight: 300;
+    margin-left: 28px;
+}
+.name{
+    font-size: 32px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+.userbox-2{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    flex-direction: column;
+    font-size: 20px;
+    font-weight: 300;
+}
+.logo-img-container{
+    height: 200px;
+    width: 200px;
+    margin-bottom: 28px;
+}
+.logo-img-{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+.msg-1{
+    font-size: 24px;
+    font-weight: 400;
+    margin-bottom: 20px;
+}
+.create-btn{
+    height: 32px;
+    width: 130px;
+    background-color: rgb(2, 144, 2);
+    color: white;
+    border-radius: 15px;
+    margin-top: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.create-btn:hover{
+    background-color: rgb(1, 179, 1);
+}

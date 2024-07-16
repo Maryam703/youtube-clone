@@ -1,0 +1,95 @@
+.user-info-container-active{
+    height: 90vh;
+    width: 18%;
+    background-color: rgb(236, 236, 236);
+    border-radius: 16px;
+    display: block;
+    position: fixed; 
+    z-index: 1;
+    left: 0;
+    top: 0;
+    overflow: auto; 
+    margin-top: 2%;
+    margin-left: 78.5%;
+  
+}
+.user-info-container{
+    height: 90vh;
+    width: 18%;
+    background-color: rgb(236, 236, 236);
+    border: 1px solid rgb(188, 188, 188);
+    border-radius: 16px;
+    display: none;
+    position: fixed; 
+    z-index: 1;
+    left: 0;
+    top: 0;
+    overflow: auto; 
+    margin-top: 2%;
+    margin-left: 78.5%;
+  
+}
+.user-info-logo-sec{
+    display: flex;
+    flex-direction: row;
+    font-size: 18px;
+    font-weight: 400; 
+    border-bottom: 1px solid rgb(188, 188, 188);
+    height: 18%;
+    margin-bottom: 10px;
+    margin-bottom: 10px;
+    margin-left: 14px;
+    margin-right: 14px;
+    margin-top: 32px;
+}
+.user-name-email{
+    display: flex;
+    flex-direction: column;
+}
+.user-info-sec{
+    display: flex;
+    justify-content: flex-start;
+    width: auto;
+    height: 16%;
+    flex-direction: column;
+    border-bottom: 1px solid rgb(188, 188, 188);
+    margin-bottom: 10px;
+    margin-left: 14px;
+    margin-right: 14px;
+}
+.user-info-option{
+    display: flex;
+    flex-direction: row;
+    height: 46px;
+    cursor: pointer;
+}
+.user-info-option:hover{
+    color: tomato;
+}
+.user-info-logo{
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    border: 1px solid rgb(188, 188, 188);
+    margin-right: 12px;
+}
+.user-info-img{
+    height: 100% ;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+.username-userinfo{
+    font-size: 22px;
+    font-weight: 600;
+}
+.user-info-icon{
+    font-size: 22px;
+    margin-right: 10px;
+}
+.link-userdashboard{
+    font-size: 16px;
+    color: blue;
+    cursor: pointer;
+    font-family: Arial, Helvetica, sans-serif;
+}

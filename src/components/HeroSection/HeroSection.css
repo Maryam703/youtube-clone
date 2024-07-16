@@ -1,0 +1,39 @@
+.container{
+    height: auto;
+    width: 100%;
+    margin-top: 4rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.item-container{
+    display: flex;
+    flex-direction: column;
+    width: 22%;
+    height: 26%;
+    margin: 1.2rem;
+}
+.vedio-box{
+    height: 90%;
+    width: 100%;
+}
+.vedio{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+.video-detail{
+    display: flex;
+    flex-direction: column;
+}
+.title{
+    font-size: 1rem;
+    font-weight: 600;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.subtitle{
+    font-size: 0.8rem;
+    font-weight: 400;
+    font-family: Arial, Helvetica, sans-serif;
+    color: rgb(107, 104, 104);
+}

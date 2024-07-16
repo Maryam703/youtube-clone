@@ -1,0 +1,68 @@
+import React, { useState } from "react";
+import "./Register.css";
+import { auth, db } from "../../Config/FirebaseConfig";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { doc, setDoc } from "firebase/firestore";
+import { useNavigate } from "react-router-dom";
+//import { toast } from 'react-toastify'
+
+export default function Register() {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate()
+
+  const Handelsubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const users = await createUserWithEmailAndPassword(auth, email, password);
+
+      const user = {
+        name: name,
+        email: email,
+        uid: users.user.uid,
+      };
+
+      const docRef = doc(db, "users", users.user.uid);
+      await setDoc(docRef, user);
+
+      //toast.success("Registered Successfully!")
+    } catch (error) {
+      console.error(error);
+    }
+    setName("");
+    setEmail("");
+    setPassword("");
+
+    navigate("/Login")
+  };
+
+  return (
+    <div className="Login-container">
+      <form onSubmit={Handelsubmit}>
+        <input
+          type="text"
+          className="input"
+          placeholder="Enter Your Name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        />
+        <input
+          type="email"
+          className="input"
+          placeholder="Enter Your Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <input
+          type="password"
+          className="input"
+          placeholder="Enter Your Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        <button className="button">Register</button>
+      </form>
+    </div>
+  );
+}
