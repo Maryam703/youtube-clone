@@ -16,6 +16,19 @@ export default function VideioDetail() {
   const { id } = useParams();
   let user = JSON.parse(localStorage.getItem('user'));
 
+  useEffect(()=>{
+    const fetchingUser = async () => {
+      const docRef = doc(db, "users", user.uid)
+      const querySnapshot = await getDoc(docRef)
+      let userSubs = {...querySnapshot.data(),uid:querySnapshot.id};
+
+      const userSub = (userSubs.subscriptions && userSubs.subscriptions.find((item) => item.id === user.uid))? true:false;
+      setIsSubscribed(userSub)
+    }
+    fetchingUser()
+  },[IsSubscribed])
+
+
   useEffect(() => {
     const fetchingData = async () => {
       try {
@@ -23,7 +36,7 @@ export default function VideioDetail() {
         const snapShot = await getDoc(docRef);
         const channelRef = doc(db, "channel", user.uid);
         const channelsnapShot = await getDoc(channelRef);
-
+     
         const commentRef = collection(db, "channel", user.uid, "videos", id, "comments");
         const commentsnapshot = await getDocs(commentRef);
         let commentArr = [];
@@ -42,8 +55,11 @@ export default function VideioDetail() {
   useEffect(() => {
     const respLike = (video.likes && video.likes.find((item) => item === user.uid)) ? true : false;
     const respdisLike = (video.dislikes && video.dislikes.find((item) => item === user.uid)) ? true : false;
+    const respSubscriptions = (user.subscriptions && user.subscriptions.find((item) => item === user.uid))?true:false;
     setIsLiked(respLike);
-    setIsDisLiked(respdisLike)
+    setIsDisLiked(respdisLike);
+    setIsSubscribed(respSubscriptions)
+    
   }, [video])
 
   const respUser = {
@@ -83,6 +99,7 @@ export default function VideioDetail() {
         await updateDoc(channelRef, {subscribers: arrayRemove(user.uid)});
         await updateDoc(userRef, {subscriptions: arrayRemove(respUser)})
       }
+    
     } catch (error) {
       console.error(error)
     }

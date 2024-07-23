@@ -61,19 +61,6 @@ export default function Drawer({showDrawer, CloseMenu}) {
             </div>      
         </div>
 
-        <div className='drawer-sec'>
-            <div className='drawer-option'>
-            <i class="drawer-icon fa-solid fa-gear"></i>
-            <p>Setting</p>
-            </div>   
-            <div className='drawer-option'>
-            <i className="drawer-icon fa-regular fa-message"></i>
-            <p>Send Feedback</p>
-            </div>      
-        </div>
-
-
-
     </div>
 
   )

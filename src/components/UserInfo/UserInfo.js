@@ -87,10 +87,6 @@ function UserInfo({ showModal, closeModal }) {
         </div>
 
         <div className='user-info-sec'>
-          <div className='user-info-option '>
-            <i className="user-info-icon fa-regular fa-circle-question"></i>
-            <p>Help</p>
-          </div>
           <div className='user-info-option' onClick={logOut}>
             <i className="user-info-icon fa-solid fa-arrow-right-from-bracket"></i>
             <p>Log out</p>
