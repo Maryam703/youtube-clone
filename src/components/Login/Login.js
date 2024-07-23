@@ -16,7 +16,7 @@ export default function Login() {
       const users = await signInWithEmailAndPassword(auth, email, password);
       const docRef = doc(db, "users", users.user.uid)
       const querySnapshot = await getDoc(docRef)
-      let user = querySnapshot.data()
+      let user = {...querySnapshot.data(),uid:querySnapshot.id}
 
      localStorage.setItem("user", JSON.stringify(user))
     

@@ -18,6 +18,10 @@ export default function Drawer({showDrawer, CloseMenu}) {
     navigate("/UserDashboard");
     CloseMenu();
   }
+  const HandleSubscription = () => {
+    navigate('/Subscriptions')
+    CloseMenu();
+  }
   
   return (
    <div className={showDrawer? 'drawer-container-active': 'drawer-container'} onClick={CloseMenu} >
@@ -40,7 +44,7 @@ export default function Drawer({showDrawer, CloseMenu}) {
         <i className="drawer-icon fa-regular fa-circle-play"></i>
         <p>Shorts</p>
         </div>
-        <div className='drawer-option'>
+        <div className='drawer-option' onClick={HandleSubscription}>
         <i className="drawer-icon fa-brands fa-youtube"></i>
         <p>Subscriptions</p>
         </div>

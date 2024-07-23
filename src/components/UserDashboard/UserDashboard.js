@@ -1,10 +1,23 @@
-import React, { useState } from "react";
+import React, { useState , useEffect} from "react";
 import "./UserDashboard.css";
 import UploadVideoModal from "../UploadVideoModal/UploadVideoModal";
+import {db} from "../../Config/FirebaseConfig"
+import { getDoc, doc } from "firebase/firestore";
 
 export default function UserDashboard() {
   const [openUploadModal, setOpenUploadModal] = useState(false);
-  const user = JSON.parse(localStorage.getItem("user"));
+  const [channel, setChannel] = useState(null);
+  let user = JSON.parse(localStorage.getItem('user'))
+  
+  useEffect(() => {
+    const fetchData = async () => {
+      const docRef = doc(db, "channel", user.uid);
+      const channelData = await getDoc(docRef)
+
+      setChannel(channelData.data());
+    }
+    fetchData()
+  }, [])
 
   const openUploadVideo = () => {
     setOpenUploadModal(true);
@@ -12,20 +25,20 @@ export default function UserDashboard() {
   const closeUploadVideo = () => {
     setOpenUploadModal(false);
   };
-
+ 
   return (
     <>
       {" "}
-      {user && (
+      {channel && (
         <div className="userboard-container">
           <div className="userbox-1">
             <div className="user-img-box">
-              <img className="user-image" src="" />
+              <img className="user-image" src={channel.file} />
             </div>
             <div className="user-inform">
-              <div className="name">{user.name}</div>
-              <div>{user.email}</div>
-              <div>2 Subscriber</div>
+              <div className="name">{channel.name}</div>
+              <div>{channel.email}</div>
+              {channel.subscribers && <div>{channel.subscribers.length} Subscriber</div>}
               <div>More About this channel</div>
             </div>
           </div>

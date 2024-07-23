@@ -1,25 +1,44 @@
-import React from "react";
+import React, { useEffect , useState} from "react";
 import "./HeroSection.css";
-import { mediaJSON } from "../../Api/Api";
 import { Link } from "react-router-dom";
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "../../Config/FirebaseConfig";
 
 export default function HeroSection() {
-  const videos = mediaJSON.categories[0].videos;
+  const [videos , setVideos] = useState(null)
+  let user = JSON.parse(localStorage.getItem('user'));
+
+  useEffect(()=>{
+    const fetchingData = async() => {
+      try {
+        const docRef = collection(db, "channel", user.uid, "videos");
+        const snapShot = await getDocs(docRef)
+        let videoArr = [];
+        snapShot.forEach((doc)=> videoArr.push({...doc.data(), id:doc.id}))
+
+        const filteredArr = videoArr.filter((item)=> item.visibility === "public")
+        setVideos(filteredArr)
+      } catch (error) {
+        console.error(error)
+      }
+    }
+    fetchingData();
+  },[])
 
   return (
     <>
     <div className="container">
-        {videos.map((item) =>(
+        {videos && videos.map((item) =>(
             <>
             <Link to={`VideoDetail/${item.id}`} className="item-container">
               <div className="video-box">
-                <video className="video" controls>
-                  <source src={item.sources} type="video/mp4" />
-                </video>
+                {item.file && <video className="video" controls>
+                  <source src={item.file} type="video/mp4" />
+                </video>}
               </div>
              <div className="video-detail">
-                <div className="title">{item.title.toUpperCase()}</div>
-                <div className="subtitle">{item.subtitle}</div>
+                <div className="title">{item.titel.toUpperCase()}</div>
+                <div className="subtitle">{item.subtitel}</div>
              </div>
               </Link>
             </>

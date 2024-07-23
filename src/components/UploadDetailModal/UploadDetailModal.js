@@ -1,17 +1,50 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./UploadDetailModal.css";
+import {db, storage} from "../../Config/FirebaseConfig";
+import { ref, getDownloadURL, uploadBytes } from "firebase/storage";
+import { collection, addDoc } from "firebase/firestore";
+import { useNavigate } from "react-router-dom";
 
-export default function UploadDetailModal({ file, closeUploadVideo }) {
+export default function UploadDetailModal({ file }) {
   const [titel, setTitel] = useState("");
   const [subtitel, setSubtitel] = useState("");
   const [description, setDescription] = useState("");
+  const navigate = useNavigate()
+  const [detailModal, setdetailModal] = useState(true)
+  let user = JSON.parse(localStorage.getItem('user'))
 
-  useEffect(() => {
-    closeUploadVideo();
-  }, []);
+  const date = new Date(Date.now()).toLocaleString();
+
+  const videoData = {
+    titel: titel,
+    subtitel: subtitel,
+    description: description,
+    date: date,
+    visibility: "public",
+    likes:[],
+    dislikes: [],
+  }
+
+  const UploadVideo = async() => {
+    try {
+      const date = Date.now()
+    const fileRef =  ref(storage, date.toString());
+    await uploadBytes(fileRef, file);
+
+    const url = await getDownloadURL(fileRef);
+
+    const docRef = collection(db, "channel",user.uid, "videos");
+    await addDoc(docRef, {...videoData, file: url})
+    } catch (error) {
+      console.error(error)
+    }
+
+    setdetailModal(false)
+    navigate("/TableData")
+  }
 
   return (
-    <div className="upload-detail-container">
+    <div className= {detailModal? "upload-detail-container-active" : "upload-detail-container"}>
       <div className="upload-detail-box">
         <div>
           <p className="upload-para">Details</p>
@@ -51,11 +84,11 @@ export default function UploadDetailModal({ file, closeUploadVideo }) {
               </div>
             </div>
             <div className="detail-upload-2">
-              <div className="uploaded-file">file</div>
+              <div className="uploaded-file"><video width="100%" height="100%" controls><source src={file}/></video></div>
             </div>
           </div>
         </div>
-        <div className="detail-sec-2">
+        <div className="detail-sec-2" onClick={UploadVideo}>
           <button>Upload</button>
         </div>
       </div>

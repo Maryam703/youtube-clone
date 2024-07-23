@@ -17,12 +17,15 @@ import UserDashboard from "./components/UserDashboard/UserDashboard";
 import UploadVideoModal from "./components/UploadVideoModal/UploadVideoModal";
 import TableData from "./components/TableData/TableData";
 import UploadDetailModal from "./components/UploadDetailModal/UploadDetailModal";
+import CreateChannel from "./components/CreateChannel/CreateChannel";
+import Subscriptions from "./components/Subscriptions/Subscriptions";
 //import { ToastContainer } from 'react-toastify';
 //import 'react-toastify/dist/ReactToastify.css';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <>
+    <Route path="/CreateChannel" element={<CreateChannel/>} />
       <Route path="/Register" element={<Register />} />
       <Route path="/Login" element={<Login />} />
       <Route path="/" element={<App />}>
@@ -32,6 +35,7 @@ const router = createBrowserRouter(
         <Route path="UploadVideoModal" element={<UploadVideoModal />} />
         <Route path="/UploadDetailModal" element={<UploadDetailModal />} />
         <Route path="/TableData" element={<TableData />} />
+        <Route path="/Subscriptions" element={<Subscriptions/>} />
       </Route>
     </>
   )

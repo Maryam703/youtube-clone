@@ -4,7 +4,6 @@ import { auth, db } from "../../Config/FirebaseConfig";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
-//import { toast } from 'react-toastify'
 
 export default function Register() {
   const [name, setName] = useState("");
@@ -21,12 +20,12 @@ export default function Register() {
         name: name,
         email: email,
         uid: users.user.uid,
+        subscriptions:[],
       };
 
       const docRef = doc(db, "users", users.user.uid);
       await setDoc(docRef, user);
 
-      //toast.success("Registered Successfully!")
     } catch (error) {
       console.error(error);
     }

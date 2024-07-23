@@ -9,22 +9,25 @@
 .item-container{
     display: flex;
     flex-direction: column;
-    width: 22%;
+    width: 24%;
     height: 26%;
     margin: 1.2rem;
 }
 .vedio-box{
-    height: 90%;
+    height: 100%;
     width: 100%;
+    border-radius: 12px;
 }
 .vedio{
     height: 100%;
     width: 100%;
     object-fit: cover;
+    border-radius: 12px;
 }
 .video-detail{
     display: flex;
     flex-direction: column;
+    border: none;
 }
 .title{
     font-size: 1rem;
