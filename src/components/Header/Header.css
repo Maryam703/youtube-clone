@@ -28,6 +28,12 @@
     font-size: 22px;
     padding: 8px;
 }
+.icons-glass{
+    height: 30px;
+    width: 30px;
+    font-size: 18px;
+    padding: 8px;
+}
 .search-input{
     width: 27vmax;
     height: 4vh;
@@ -52,7 +58,6 @@
 #youtube-user{
     height: 3.5vh;
     width: 32px;
-    border: 1px solid rgb(176, 175, 175);
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -81,4 +86,6 @@
     width: 110px;
     border: 1px solid rgb(182, 181, 181);
     border-radius: 20px;
+    margin-top: 22px;
+    margin-right: 28px;
 }

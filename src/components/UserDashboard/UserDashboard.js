@@ -33,7 +33,7 @@ export default function UserDashboard() {
         <div className="userboard-container">
           <div className="userbox-1">
             <div className="user-img-box">
-              <img className="user-image" src={channel.file} />
+              <img className="user-image" src={channel.file? channel.file : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbyHZ4yjBXpnnG01YecWfbRFKuukNxlmYE4wRGg5I0jaj6StK0BLJ2SaQ-jcUXT_dAlmo&usqp=CAU'} />
             </div>
             <div className="user-inform">
               <div className="name">{channel.name}</div>

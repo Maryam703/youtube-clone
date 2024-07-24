@@ -24,16 +24,22 @@ export default function CreateChannel({closecreateModal}) {
         subscribers: [],
     }
 
+
     const createChannel=async() => {
         try {
+          if (file != null) {
             const date = Date.now();
-          const fileRef = ref(storage, date.toString());
-          await uploadBytes(fileRef, file)
+            const fileRef = ref(storage, date.toString());
+            await uploadBytes(fileRef, file)
 
-          const url = await getDownloadURL(fileRef);
+            const url = await getDownloadURL(fileRef);
 
-          const docRef = doc(db, "channel", user.uid);
-          await setDoc(docRef, {...channelData, file: url})
+            const docRef = doc(db, "channel", user.uid);
+            await setDoc(docRef, {...channelData, file: url})
+          }else{
+            const docRef = doc(db, "channel", user.uid);
+            await setDoc(docRef, channelData)
+          }
 
         } catch (error) {
             console.error(error)
@@ -42,7 +48,7 @@ export default function CreateChannel({closecreateModal}) {
         setEmail("");
 
         closecreateModal();
-        navigate("/")
+        navigate("/UserDashboard")
     }
     
     return (
@@ -50,9 +56,9 @@ export default function CreateChannel({closecreateModal}) {
             <div className='create-channel-box'>
                 How You'll appear
                 <div className='create-channel-1'>
-                    <div className='create-image-image-box' onClick={selectFile}><img className='create-channel-img' src='' /></div>
+                    <div className='create-image-image-box' onClick={selectFile}><img className='create-channel-img' src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8QATbxHgFvoPhdxKFIcSQragjLC6BcCo9FiU0koLh0FGzL3FocfsauUs53dAHfKCecaA&usqp=CAU' /></div>
                     <input id='fileInput' class="hidden" name='file' accept='image/*' type='file' onChange={(e)=> setFile(e.target.files[0])} />
-                    <p>Create your profile</p>
+                    <p>Choose your profile picture</p>
                 </div>
                 <input name='name' type='text' placeholder='Enter your Name:' value={name} onChange={(e) => setName(e.target.value)} />
                 <input name='email' type='email' placeholder='Enter your Name:' value={email} onChange={(e) => setEmail(e.target.value)} />

@@ -5,9 +5,10 @@ import {db} from "../../Config/FirebaseConfig";
 
 
 export default function TableData() {
-  const headings = ["Video", "Visibility", "Date", "Comment", "Like"];
+  const headings = ["Video", "Visibility", "Date", "DisLikes", "Like"];
   const [itemData , setItemData] = useState(null)
   let user = JSON.parse(localStorage.getItem('user'))
+  
 
   useEffect(()=>{
     const fetchingData = async() => {
@@ -15,7 +16,7 @@ export default function TableData() {
         const docRef = collection(db, "channel", user.uid, "videos");
         const snapShot = await getDocs(docRef)
         let videoArr = [];
-        snapShot.forEach((doc)=> videoArr.push({...doc.data(), id:doc.id}))
+        snapShot.forEach((doc)=> videoArr.push({...doc.data(), id:doc.id}));
 
         setItemData(videoArr)
       } catch (error) {
@@ -45,7 +46,7 @@ export default function TableData() {
               <div className="video-detail-tbl">
                 <div className="video-tbl">
                   {item.file && <video className="video-player-tbl" controls>
-                    <source src={item.file} />
+                    <source src={item.file} type="video/mp4"/>
                   </video>}
                 </div>
                 <div>{item.titel}</div>
@@ -53,8 +54,8 @@ export default function TableData() {
             </td>
             <td>{item.visibility}</td>
             <td>{item.date}</td>
-            <td>5</td>
-            <td>2</td>
+            {item.dislikes && <td>{item.dislikes.length}</td>}
+            {item.likes && <td>{item.likes.length}</td>}
           </tr>
             )
           })}

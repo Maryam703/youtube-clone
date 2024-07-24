@@ -33,17 +33,17 @@ export default function HeroSection() {
             <Link to={`VideoDetail/${item.id}`} className="item-container">
               <div className="video-box">
                 {item.file && <video className="video" controls>
-                  <source src={item.file} type="video/mp4" />
+                  <source src={item.file} ttype="video/mp4" />
                 </video>}
               </div>
-             <div className="video-detail">
+             <div className="video-details">
                 <div className="title">{item.titel.toUpperCase()}</div>
                 <div className="subtitle">{item.subtitel}</div>
              </div>
               </Link>
             </>
         )
-        )};
+        )}
     </div>
      </>
   );

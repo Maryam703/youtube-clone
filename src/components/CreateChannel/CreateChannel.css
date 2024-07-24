@@ -38,9 +38,6 @@
     height: 180px;
     width: 180px;
     border: 1px solid rgb(209, 207, 207);
-    background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQNSCRHQbyjUxqjgp_23vUwPELX3huc1h4Twgn1IwdVMA9ISXzoSxWNSYBKFOvcEk8JFQc&usqp=CAU');
-    background-size: 150px 150px;
-    background-repeat: no-repeat;
     border-radius: 50%;
     padding: 16px;
 }

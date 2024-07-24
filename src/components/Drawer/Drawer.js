@@ -1,25 +1,46 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import "./Drawer.css"
 import { useNavigate } from 'react-router-dom'
+import {db} from "../../Config/FirebaseConfig"
+import {doc, getDoc} from "firebase/firestore"
 
 export default function Drawer({showDrawer, CloseMenu}) {
+  const [channel, setChannel] = useState({})
+  let user = JSON.parse(localStorage.getItem('user'))
   const navigate = useNavigate()
+
+  useEffect(()=>{
+    const fetchindata = async() =>{
+      try {
+        const channelRef = doc(db, "channel", user.uid);
+        const channelSnapshot = await getDoc(channelRef);
+        setChannel(channelSnapshot.data())
+      } catch (error) {
+        console.error(error)
+      }
+    }
+    fetchindata()
+  },[])
 
   const HandleHome = () => {
      navigate("/");
      CloseMenu();
   }
-  const HandleVideosTable = () => {
-    navigate("/TableData");
-    CloseMenu();
-  }
-
   const HandelYourChannel = () => {
-    navigate("/UserDashboard");
-    CloseMenu();
+    if (channel) {
+      navigate("/UserDashboard");
+      CloseMenu();
+    }else{
+      navigate("/CreateChannel")
+      CloseMenu();
+    }
   }
   const HandleSubscription = () => {
     navigate('/Subscriptions')
+    CloseMenu();
+  }
+  const HandleVideosTable = () => {
+    navigate('/TableData')
     CloseMenu();
   }
   
@@ -40,25 +61,21 @@ export default function Drawer({showDrawer, CloseMenu}) {
         <i className="drawer-icon fa-solid fa-house"></i>
         <p>Home</p>
         </div>
-        <div className='drawer-option'>
-        <i className="drawer-icon fa-regular fa-circle-play"></i>
-        <p>Shorts</p>
-        </div>
         <div className='drawer-option' onClick={HandleSubscription}>
         <i className="drawer-icon fa-brands fa-youtube"></i>
         <p>Subscriptions</p>
         </div>
         </div>
 
-        <div className='drawer-sec' onClick={HandelYourChannel}>
-            <div className='drawer-option'>
+        <div className='drawer-sec'>
+            <div className='drawer-option' onClick={HandelYourChannel}>
             <i className="drawer-icon fa-solid fa-tv"></i>
             <p>Your Channel</p>
             </div>   
-            <div className='drawer-option' onClick={HandleVideosTable}>
+           {channel && <div className='drawer-option' onClick={HandleVideosTable}>
             <i className="drawer-icon fa-solid fa-film"></i>
             <p>Your videos</p>
-            </div>      
+            </div> }     
         </div>
 
     </div>

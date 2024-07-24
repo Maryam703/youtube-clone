@@ -50,7 +50,7 @@ function Header() {
         <div className="header-heads">
           <input className="search-input" placeholder="Search YouTube" />
           <div className="search-icon">
-            <i className="icons fa-solid fa-magnifying-glass"></i>
+            <i className="icons-glass fa-solid fa-magnifying-glass"></i>
           </div>
         </div>
         {user ? (

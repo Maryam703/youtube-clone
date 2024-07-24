@@ -14,9 +14,9 @@ function UserInfo({ showModal, closeModal }) {
   useEffect(() => {
     const fetchData = async () => {
       const docRef = doc(db, "channel", user.uid);
-      const channelData = await getDoc(docRef);
+      const channelsnapShot = await getDoc(docRef);
 
-      setChannel(channelData.data());
+      setChannel(channelsnapShot.data());
     }
     fetchData()
   }, [])
@@ -40,7 +40,7 @@ function UserInfo({ showModal, closeModal }) {
     navigate("/TableData");
     closeModal();
   }
-  const logOut = () =>{
+  const logOut = () => {
     localStorage.removeItem('user');
     navigate("/")
   }
@@ -55,7 +55,7 @@ function UserInfo({ showModal, closeModal }) {
         <div className='user-info-logo-sec'>
           <div className='user-info-logo'>
             <img
-              src=""
+              src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8QATbxHgFvoPhdxKFIcSQragjLC6BcCo9FiU0koLh0FGzL3FocfsauUs53dAHfKCecaA&usqp=CAU'
               className="user-info-img"
             />
           </div>
@@ -63,28 +63,23 @@ function UserInfo({ showModal, closeModal }) {
             <div className="username-userinfo">{user.name}</div>
             <div>{user.email}</div>
             {channel ? <div className="link-userdashboard" onClick={OpenUser} >View Your Channel</div> : <div className="link-userdashboard" onClick={OpencreateModal} >Create Channel</div>}
-            </div>
+          </div>
         </div>
 
 
         <div className='user-info-sec'>
-          <div className='user-info-option'onClick={handleSubscription}>
+          <div className='user-info-option' onClick={handleSubscription}>
             <i className="user-info-icon fa-brands fa-youtube"></i>
             <p>Subscriptions</p>
           </div>
         </div>
 
-        <div className='user-info-sec'>
-
+        {channel && <div className='user-info-sec'>
           <div className='user-info-option' onClick={HandleTable}>
             <i className="user-info-icon fa-solid fa-film"></i>
             <p>Your videos</p>
           </div>
-          <div className='user-info-option'>
-            <i class="user-info-icon fa-solid fa-gear"></i>
-            <p>Setting</p>
-          </div>
-        </div>
+        </div>}
 
         <div className='user-info-sec'>
           <div className='user-info-option' onClick={logOut}>

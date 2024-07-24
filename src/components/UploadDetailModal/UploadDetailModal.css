@@ -49,19 +49,27 @@
         border: 1px solid rgb(211, 207, 207);
         border-radius: 10px;
         margin-bottom: 12px;
+        margin-left: 6px;
         font-size: 14px;
-        font-weight: 500;
+        font-weight: 600;
         padding: 6px;
+        color: gray;
+        display: flex;
+        justify-content: flex-start;
     }
     .inputs{
         border: none;
         outline: none;
         font-size: 16px;
+        color: black;
         font-weight: 400;
     }
     .large-input{
         font-size: 16px;
-        font-weight: 400;
+        color: black;
+        border: none;
+        outline: none;
+        font-weight: 300;
     }
     .detail-upload-2{
         width: 50%;
