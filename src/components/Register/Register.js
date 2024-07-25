@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./Register.css";
+import Loader from "../Loader/Loader";
 import { auth, db } from "../../Config/FirebaseConfig";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore";
@@ -9,10 +10,12 @@ export default function Register() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false)
   const navigate = useNavigate()
 
   const Handelsubmit = async (e) => {
     e.preventDefault();
+    setLoading(true)
     try {
       const users = await createUserWithEmailAndPassword(auth, email, password);
 
@@ -32,11 +35,13 @@ export default function Register() {
     setName("");
     setEmail("");
     setPassword("");
-
+    setLoading(false)
     navigate("/Login")
   };
 
   return (
+    <>
+    {loading&& <Loader/> }
     <div className="Login-container">
       <form onSubmit={Handelsubmit}>
         <input
@@ -63,5 +68,6 @@ export default function Register() {
         <button className="button">Register</button>
       </form>
     </div>
+    </>
   );
 }

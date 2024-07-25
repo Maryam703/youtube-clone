@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import "./VideoDetail.css";
+import Loader from "../Loader/Loader"
 import { useParams } from "react-router-dom";
 import Shorts from "../Shorts/Shorts";
 import { addDoc, arrayRemove, arrayUnion, collection, doc, getDoc, getDocs, updateDoc } from "firebase/firestore";
 import { db } from "../../Config/FirebaseConfig";
 
 export default function VideioDetail() {
+  const [loading, setLoading] = useState(false)
   const [video, setVideo] = useState({})
   const [channel, setChannel] = useState({})
   const [isSubscribed, setIsSubscribed] = useState(false)
@@ -18,20 +20,32 @@ export default function VideioDetail() {
 
 
   useEffect(() => {
+    setLoading(true)
     const fetchingData = async () => {
       try {
         const docRef = doc(db, "channel", user.uid, "videos", id);
         const snapShot = await getDoc(docRef);
         const channelRef = doc(db, "channel", user.uid);
         const channelsnapShot = await getDoc(channelRef);
+        
+        setVideo(snapShot.data())
+        setChannel(channelsnapShot.data())
+      } catch (error) {
+        console.error(error)
+      }
+      setLoading(false)
+    }
+    fetchingData();
+  }, [])
 
+  useEffect(() => {
+    const fetchingData = async () => {
+      try {
         const commentRef = collection(db, "channel", user.uid, "videos", id, "comments");
         const commentsnapshot = await getDocs(commentRef);
         let commentArr = [];
         commentsnapshot.forEach((doc) => commentArr.push(doc.data()))
 
-        setVideo(snapShot.data())
-        setChannel(channelsnapShot.data())
         setAllComments(commentArr)
       } catch (error) {
         console.error(error)
@@ -49,7 +63,7 @@ export default function VideioDetail() {
         let userSubs = querySnapshot.data();
         const respLike = (video.likes && video.likes.find((item) => item === user.uid)) ? true : false;
         const respdisLike = (video.dislikes && video.dislikes.find((item) => item === user.uid)) ? true : false;
-        const respSubscriptions = (userSubs.subscriptions.length > 0 && user.subscriptions.find((item) => item.id === user.uid)) ? true : false;
+        const respSubscriptions = (userSubs.subscriptions.length>0 && userSubs.subscriptions.find((item) => item.id === user.uid)) ? true : false;
 
         setIsLiked(respLike);
         setIsDisLiked(respdisLike);
@@ -156,6 +170,8 @@ export default function VideioDetail() {
   }
 
   return (
+    <>
+    {loading && <Loader /> }
     <div className="detail-page">
       <div className="detail-container">
         <div className="deatil-item">
@@ -240,5 +256,6 @@ export default function VideioDetail() {
         <Shorts />
       </div>
     </div>
+    </>
   );
 }

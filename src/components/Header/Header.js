@@ -28,11 +28,14 @@ function Header() {
   };
 
   const HandleUpload = () => {
-    setUploadModal(true);
+    navigate("/UserDashboard");
   };
   const CancelUpload = () => {
     setUploadModal(false);
   };
+  const HandleUtube = () => {
+    navigate("/")
+  }
 
   return (
     <div className="header">
@@ -45,6 +48,7 @@ function Header() {
             src="https://cdn.mos.cms.futurecdn.net/8gzcr6RpGStvZFA2qRt4v6.jpg"
             alt="logo"
             className="logo"
+            onClick={HandleUtube}
           />
         </div>
         <div className="header-heads">

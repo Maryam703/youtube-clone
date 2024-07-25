@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./UploadVideoModal.css";
 import UploadDetailModal from "../UploadDetailModal/UploadDetailModal";
 
+
 function UploadVideoModal({openUploadModal, closeUploadVideo}) {
   const [file, setFile] = useState(null);
-
+ 
   const Uploadvideo = () => {
     const input = document.getElementById('fileInput');
         input.click()
@@ -41,12 +42,12 @@ function UploadVideoModal({openUploadModal, closeUploadVideo}) {
             type="file"
             accept="video/*"
             placeholder="Upload File"
-            onChange={(e) => setFile(e.target.files)}
+            onChange={(e) => setFile(e.target.files[0])}
           />
         </div>
       </div>
     </div>
-    {file &&  <UploadDetailModal file={file} closeUploadVideo={closeUploadVideo}/>}
+    {file &&  <UploadDetailModal file={file} closeUploadVideo={closeUploadVideo} />}
 
     </>
   );

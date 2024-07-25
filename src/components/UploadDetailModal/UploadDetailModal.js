@@ -1,19 +1,21 @@
 import React, { useState } from "react";
 import "./UploadDetailModal.css";
+import Loader from "../Loader/Loader"
 import {db, storage} from "../../Config/FirebaseConfig";
 import { ref, getDownloadURL, uploadBytes } from "firebase/storage";
 import { collection, addDoc } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
 
-export default function UploadDetailModal({ file }) {
+export default function UploadDetailModal({ file, closeUploadVideo }) {
   const [titel, setTitel] = useState("");
   const [subtitel, setSubtitel] = useState("");
   const [description, setDescription] = useState("");
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate()
   const [detailModal, setdetailModal] = useState(true)
   let user = JSON.parse(localStorage.getItem('user'))
-
   const date = new Date(Date.now()).toLocaleString();
+
 
   const videoData = {
     titel: titel,
@@ -26,9 +28,11 @@ export default function UploadDetailModal({ file }) {
   }
 
   const UploadVideo = async() => {
+    setLoading(true)
     try {
       const date = Date.now()
     const fileRef =  ref(storage, date.toString());
+
     await uploadBytes(fileRef, file);
 
     const url = await getDownloadURL(fileRef);
@@ -40,10 +44,14 @@ export default function UploadDetailModal({ file }) {
     }
 
     setdetailModal(false)
+    closeUploadVideo()
+    setLoading(false)
     navigate("/TableData")
   }
 
   return (
+    <>
+    {loading && <Loader />}
     <div className= {detailModal? "upload-detail-container-active" : "upload-detail-container"}>
       <div className="upload-detail-box">
         <div>
@@ -93,5 +101,6 @@ export default function UploadDetailModal({ file }) {
         </div>
       </div>
     </div>
+    </>
   );
 }

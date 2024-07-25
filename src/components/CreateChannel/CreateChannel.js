@@ -4,10 +4,12 @@ import { uploadBytes, ref ,  getDownloadURL } from 'firebase/storage';
 import { doc, setDoc } from 'firebase/firestore';
 import {db, storage} from "../../Config/FirebaseConfig";
 import { useNavigate } from 'react-router-dom';
+import Loader from '../Loader/Loader';
 
 export default function CreateChannel({closecreateModal}) {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
+    const [loading, setLoading] = useState(false)
     const [file, setFile] = useState(null);
     const navigate = useNavigate()    
     
@@ -26,6 +28,7 @@ export default function CreateChannel({closecreateModal}) {
 
 
     const createChannel=async() => {
+        setLoading(true)
         try {
           if (file != null) {
             const date = Date.now();
@@ -46,12 +49,14 @@ export default function CreateChannel({closecreateModal}) {
         }
         setName("");
         setEmail("");
-
+        setLoading(false)
         closecreateModal();
-        navigate("/UserDashboard")
+        navigate("/Login")
     }
     
     return (
+        <>
+        {loading && <Loader />}
         <div className='create-channel-container'>
             <div className='create-channel-box'>
                 How You'll appear
@@ -68,5 +73,6 @@ export default function CreateChannel({closecreateModal}) {
                 </div>
             </div>
         </div>
+        </>
     )
 }
