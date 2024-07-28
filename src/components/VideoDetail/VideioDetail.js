@@ -246,12 +246,7 @@ export default function VideioDetail() {
                 </div>
                 <input class='hidden' id="dislike" type="checkbox" value={isDisLiked} onChange={(e) => setDisLike(e.target.checked)} />
               </div>
-
-
             </div>
-
-
-            <div className="detail-thumb">{video.thumb}</div>
             <div className="detail-description">{video.description}</div>
           </div>
 
