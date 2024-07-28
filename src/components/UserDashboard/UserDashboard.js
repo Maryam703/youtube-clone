@@ -1,14 +1,14 @@
-import React, { useState , useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import "./UserDashboard.css";
 import UploadVideoModal from "../UploadVideoModal/UploadVideoModal";
-import {db} from "../../Config/FirebaseConfig"
+import { db } from "../../Config/FirebaseConfig"
 import { getDoc, doc } from "firebase/firestore";
 
 export default function UserDashboard() {
   const [openUploadModal, setOpenUploadModal] = useState(false);
   const [channel, setChannel] = useState(null);
   let user = JSON.parse(localStorage.getItem('user'))
-  
+
   useEffect(() => {
     const fetchData = async () => {
       const docRef = doc(db, "channel", user.uid);
@@ -25,7 +25,7 @@ export default function UserDashboard() {
   const closeUploadVideo = () => {
     setOpenUploadModal(false);
   };
- 
+
   return (
     <>
       {" "}
@@ -33,7 +33,7 @@ export default function UserDashboard() {
         <div className="userboard-container">
           <div className="userbox-1">
             <div className="user-img-box">
-              <img className="user-image" src={channel.file? channel.file : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbyHZ4yjBXpnnG01YecWfbRFKuukNxlmYE4wRGg5I0jaj6StK0BLJ2SaQ-jcUXT_dAlmo&usqp=CAU'} />
+              <img className="user-image" src={channel.file ? channel.file : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbyHZ4yjBXpnnG01YecWfbRFKuukNxlmYE4wRGg5I0jaj6StK0BLJ2SaQ-jcUXT_dAlmo&usqp=CAU'} />
             </div>
             <div className="user-inform">
               <div className="name">{channel.name}</div>

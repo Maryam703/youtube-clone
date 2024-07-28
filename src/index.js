@@ -19,6 +19,7 @@ import TableData from "./components/TableData/TableData";
 import UploadDetailModal from "./components/UploadDetailModal/UploadDetailModal";
 import CreateChannel from "./components/CreateChannel/CreateChannel";
 import Subscriptions from "./components/Subscriptions/Subscriptions";
+import SearchChannel from "./components/SearchChannel/SearchChannel";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -27,13 +28,14 @@ const router = createBrowserRouter(
       <Route path="/Login" element={<Login />} />
       <Route path="/" element={<App />}>
         <Route path="" element={<HeroSection />} />
-        <Route path="/CreateChannel" element={<CreateChannel/>} />
+        <Route path="/CreateChannel" element={<CreateChannel />} />
         <Route path="VideoDetail/:id" element={<VideioDetail />} />
         <Route path="UserDashboard" element={<UserDashboard />} />
         <Route path="UploadVideoModal" element={<UploadVideoModal />} />
         <Route path="/UploadDetailModal" element={<UploadDetailModal />} />
         <Route path="/TableData" element={<TableData />} />
-        <Route path="/Subscriptions" element={<Subscriptions/>} />
+        <Route path="/Subscriptions" element={<Subscriptions />} />
+        <Route path="/SearchChannel" element={<SearchChannel />} />
       </Route>
     </>
   )

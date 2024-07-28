@@ -31,8 +31,10 @@
         border-radius: 12px;
     }
     .upload-para{
-        font-size: 24px;
+        font-size: 28px;
         font-weight: 500;
+        color: red;
+        margin-left: 16px;
     }
     .detail-upload{
         display: flex;
@@ -95,14 +97,15 @@
         height: 36px;
         width: 150px;
         padding: 4px;
+        font-size: 20px;
         margin-right: 10%;
         text-align: center;
         justify-content: center;
         border-radius: 20px;
-        background-color: rgb(40, 39, 39);
+        background-color: red;
         color: white;
         font-family: Arial, Helvetica, sans-serif;
     }
     .detail-sec-2>button:hover{
-        background-color: rgb(65, 63, 63);
+        background-color: rgb(228, 37, 37);
     }

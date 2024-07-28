@@ -1,7 +1,7 @@
 import React, { useEffect , useState} from "react";
 import "./HeroSection.css";
 import { Link } from "react-router-dom";
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, getDoc, doc } from "firebase/firestore";
 import { db } from "../../Config/FirebaseConfig";
 
 export default function HeroSection() {
@@ -11,13 +11,23 @@ export default function HeroSection() {
   useEffect(()=>{
     const fetchingData = async() => {
       try {
-        const docRef = collection(db, "channel", user.uid, "videos");
-        const snapShot = await getDocs(docRef)
-        let videoArr = [];
-        snapShot.forEach((doc)=> videoArr.push({...doc.data(), id:doc.id}))
+        const userRef = doc(db, "users", user.uid);
+        const querySnapshot = await getDoc(userRef);
+        const subscriptions = querySnapshot.data().subscriptions;
+        const subscriptionsIds = subscriptions.map((item)=> item.id);
 
-        const filteredArr = videoArr.filter((item)=> item.visibility === "public")
-        setVideos(filteredArr)
+        const queries = await Promise.all(subscriptionsIds.map(id=>{
+          return getDocs(collection(db,"channel",id,"videos"))
+        }))
+
+        const videos = []
+        queries.forEach(docs=>{
+          docs.forEach(video=>{
+            videos.push( {id:video.id,...video.data()})
+          })
+        })
+
+        setVideos(videos)
       } catch (error) {
         console.error(error)
       }

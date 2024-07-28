@@ -39,6 +39,104 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
+├── public/
+│   ├── favicon.ico
+│   ├── index.html
+│   ├── logo192.png
+│   ├── logo512.png
+│   ├── manifest.json
+│   └── robots.txt
+│
+├── src/
+│   ├── components/
+│   │   ├── CreatChannel/
+│   │   │   ├── CreatChannel.js
+│   │   │   └── CreatChannel.css
+│   │   │
+│   │   ├── Drawer/
+│   │   │   ├── Drawer.js
+│   │   │   └── Drawer.css
+│   │   │
+│   │   ├── Header/
+│   │   │   ├── Header.js
+│   │   │   └── Header.css
+│   │   │
+│   │   ├── HeroSection/
+│   │   │   ├── HeroSection.js
+│   │   │   └── HeroSection.css
+│   │   │
+│   │   ├── Loader/
+│   │   │   ├── Loader.js
+│   │   │   └── Loader.css
+│   │   │
+│   │   ├── Login/
+│   │   │   ├── Login.js
+│   │   │   └── Login.css
+│   │   │
+│   │   ├── Register/
+│   │   │   ├── Register.js
+│   │   │   └── Register.css
+│   │   │
+│   │   ├── SearchChannel/
+│   │   │   └── SearchChannel.js
+│   │   │
+│   │   ├── SearchChannelCard/
+│   │   │   ├── SearchChannelCard.js
+│   │   │   └── SearchChannelCard.css
+│   │   │
+│   │   ├── Shorts/
+│   │   │   ├── Shorts.js
+│   │   │   └── Shorts.css
+│   │   │
+│   │   ├── Subscriptions/
+│   │   │   ├── Subscriptions.js
+│   │   │   └── Subscriptions.css
+│   │   │
+│   │   ├── TableData/
+│   │   │   ├── TableData.js
+│   │   │   └── TableData.css
+│   │   │
+│   │   ├── UploadDetailModal/
+│   │   │   ├── UploadDetailModal.js
+│   │   │   └── UploadDetailModal.css
+│   │   │
+│   │   ├── UploadVideoModal/
+│   │   │   ├── UploadVideoModal.js
+│   │   │   └── UploadVideoModal.css
+│   │   │
+│   │   ├── UserDashboard/
+│   │   │   ├── UserDashboard.js
+│   │   │   └── UserDashboard.css
+│   │   │
+│   │   ├── UserInfo/
+│   │   │   ├── UserInfo.js
+│   │   │   └── UserInfo.css
+│   │   │
+│   │   └── VideoDetail/
+│   │       ├── VideoDetail.js
+│   │       └── VideoDetail.css
+│   │
+│   ├── Config/
+│   │   └── FirebaseConfig.js
+│   │
+│   ├── Context/
+│   │   ├── Context.js
+│   │   └── ContextProvider.js
+│   │
+│   ├── App.css
+│   ├── App.js
+│   ├── App.test.js
+│   ├── index.css
+│   ├── index.js
+│   ├── logo.svg
+│   ├── reportWebVitals.js
+│   └── setupTests.js
+│      
+├── package-lock.json
+├── package.json
+├── README.md
+└── tailwind.config.js
+
 ## Learn More
 
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).

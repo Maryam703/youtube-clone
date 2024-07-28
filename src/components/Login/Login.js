@@ -4,7 +4,7 @@ import Loader from "../Loader/Loader";
 import { auth, db } from "../../Config/FirebaseConfig";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { doc, getDoc } from "firebase/firestore";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -29,11 +29,8 @@ export default function Login() {
       fetchData();
       if (channel) {
         navigate("/")
-      } else {
-        navigate("/")
       }
     }
-
   }, [])
 
   const Handelsubmit = async (e) => {
@@ -44,29 +41,28 @@ export default function Login() {
       const docRef = doc(db, "users", users.user.uid)
       const querySnapshot = await getDoc(docRef)
 
-      if (!querySnapshot.exists()) {
-        navigate("/Register")
-      }
-
       let user = { ...querySnapshot.data(), uid: querySnapshot.id }
       localStorage.setItem("user", JSON.stringify(user))
 
+      setEmail("");
+      setPassword("");
+      setLoading(false)
+      navigate("/")
+
     } catch (error) {
-      console.error(error);
+      navigate("/Register")
     }
-    setEmail("");
-    setPassword("");
-    setLoading(false)
-    navigate("/")
   };
 
   return (
     <>
       {loading && <Loader />}
       <div className="Login-container">
+        <div className="login-logo"><img className="login-logo-img" src="https://static-00.iconduck.com/assets.00/youtube-icon-1024x1024-t3zo1lo4.png" /></div>
         <form onSubmit={Handelsubmit}>
           <input
             type="email"
+            required
             className="input"
             placeholder="Enter Your Email"
             value={email}
@@ -74,12 +70,14 @@ export default function Login() {
           />
           <input
             type="password"
+            required
             className="input"
             placeholder="Enter Your Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
           <button className="button">Login</button>
+          <div>Don't have an account?<Link className="reg-link" to={"/Register"}>Register here!</Link></div>
         </form>
       </div>
     </>

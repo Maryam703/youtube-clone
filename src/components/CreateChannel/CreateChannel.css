@@ -39,7 +39,8 @@
     width: 180px;
     border: 1px solid rgb(209, 207, 207);
     border-radius: 50%;
-    padding: 16px;
+    background-size: cover;
+    background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8QATbxHgFvoPhdxKFIcSQragjLC6BcCo9FiU0koLh0FGzL3FocfsauUs53dAHfKCecaA&usqp=CAU');
 }
 .create-channel-img{
     height: 100%;
