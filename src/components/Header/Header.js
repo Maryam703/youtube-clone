@@ -95,7 +95,7 @@ function Header() {
         ) : (
           <div className="login-user" onClick={() => navigate("/Login")}>
             {" "}
-            <i className="icons fa-regular fa-user"></i>Sign
+            <i className="user-icon fa-regular fa-user"></i>Sign
             In
           </div>
         )}
