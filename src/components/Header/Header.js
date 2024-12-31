@@ -5,7 +5,7 @@ import UserInfo from "../UserInfo/UserInfo";
 import { useNavigate } from "react-router-dom";
 import UploadVideoModal from "../UploadVideoModal/UploadVideoModal";
 import Context from "../../Context/Context";
-import { collection, getDocs, where, query, or } from "firebase/firestore";
+import { collection, getDocs, where, query } from "firebase/firestore";
 import { db } from "../../Config/FirebaseConfig";
 
 function Header() {
@@ -62,7 +62,7 @@ function Header() {
   return (
     <div className="header">
       <div className="header-detail">
-        <div className="header-head-side">
+        <div className="header-head-sides">
           <div onClick={ShowMenu}>
             <i className="icons fa-solid fa-bars"></i>
           </div>
@@ -74,13 +74,14 @@ function Header() {
           />
         </div>
         <div className="header-head-center">
-          <input className="search-input" placeholder="Search YouTube" value={searchChannel} onChange={(e) => setSearchChannel(e.target.value)} />
+          <input  className="search-input" placeholder="Search YouTube" value={searchChannel} onChange={(e) => setSearchChannel(e.target.value)}>
+            </input>
           <div className="search-icon" onClick={searchYoutube}>
             <i className="fa-solid fa-magnifying-glass"></i>
           </div>
         </div>
         {user ? (
-          <div className="header-head-side">
+          <div className="header-head-sides">
             <div className="add-youtube" onClick={HandleUpload}>
               <i className="icons fa-solid fa-video"></i>
             </div>
@@ -93,10 +94,12 @@ function Header() {
             </div>
           </div>
         ) : (
+          <div className="header-head-sides">
           <div className="login-user" onClick={() => navigate("/Login")}>
             {" "}
             <i className="user-icon fa-regular fa-user"></i>Sign
             In
+          </div>
           </div>
         )}
       </div>
