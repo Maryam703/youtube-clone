@@ -1,11 +1,11 @@
 .container{
     height: auto;
-    width: 100%;
+    width: 100vw;
     margin-top: 4rem;
-    margin-left: 5rem;
     display: flex;
     flex-wrap: wrap;
-    justify-content: flex-start;
+    align-items: center;
+    justify-content: center;
 }
 .item-container{
     display: flex;

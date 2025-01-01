@@ -52,8 +52,8 @@ export default function UserDashboard() {
             </div>
 
             <div className="msg-1">Create Content on Any Device</div>
-            <div>Upload and record at home or on the go</div>
-            <div>EveryThing that you make public will appear here</div>
+            <div className="para-container">Upload and record at home or on the go</div>
+            <div className="para-container">EveryThing that you make public will appear here</div>
             <button className="create-btn" onClick={openUploadVideo}>
               Create
             </button>

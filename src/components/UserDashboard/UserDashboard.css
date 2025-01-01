@@ -63,6 +63,12 @@
     font-weight: 400;
     margin-bottom: 20px;
 }
+.para-container{
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 .create-btn{
     height: 32px;
     width: 130px;
